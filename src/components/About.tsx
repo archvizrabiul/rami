@@ -1,6 +1,40 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { GraduationCap, Award, Briefcase } from "lucide-react";
 
 const About = () => {
+  const sections = [
+    {
+      icon: GraduationCap,
+      title: "Education",
+      content: {
+        institution: "Narsingdi Polytechnic Institute",
+        period: "2018-2022",
+        description: "Diploma in Civil Engineering",
+        details: "Focus: Studied structural design, construction materials, and CAD; completed hands-on projects and site internships"
+      }
+    },
+    {
+      icon: Award,
+      title: "Certification", 
+      content: {
+        institution: "ISDB-BISEW IT SCHOLARSHIP",
+        period: "Oct, 2024 - Aug, 2025",
+        description: "Architectural with Civil CAD",
+        details: "Skills: Trained in Revit, AutoCAD, 3ds Max, Photoshop, and MS Project with a focus on architectural drafting, 3D modeling, and civil engineering applications."
+      }
+    },
+    {
+      icon: Briefcase,
+      title: "Experience",
+      content: {
+        institution: "Junior Instructor - Civil Department",
+        period: "Recent",
+        description: "Teaching & Training",
+        details: "Conducted classes and provided guidance to Civil Engineering students"
+      }
+    }
+  ];
+
   return (
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-6">
@@ -9,47 +43,50 @@ const About = () => {
             <h2 className="text-4xl lg:text-5xl font-playfair font-bold text-foreground mb-6">
               About Me
             </h2>
-            <div className="w-24 h-1 bg-gradient-accent mx-auto rounded-full"></div>
           </div>
 
-          <Card className="shadow-medium border-0 bg-card">
-            <CardContent className="p-8 lg:p-12">
-              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
-                <p className="text-xl font-medium text-foreground">
-                  Creative and detail-oriented Architectural Visualizer with a passion for merging technology with design.
-                </p>
-                
-                <p>
-                  With a <strong className="text-foreground">Diploma in Civil Engineering</strong> and specialized training under the <strong className="text-foreground">IsDB-BISEW IT Scholarship</strong>, I bring a unique blend of technical expertise and creative vision to every project.
-                </p>
+          <div className="mb-12">
+            <p className="text-lg text-muted-foreground text-center max-w-3xl mx-auto leading-relaxed">
+              Creative and detail-oriented Architectural Visualizer with a Diploma in Civil Engineering and 
+              certified training under the IsDB-BISEW IT Scholarship. Passionate about leveraging technology 
+              and AI to create stunning and realistic architectural representations.
+            </p>
+          </div>
 
-                <p>
-                  I'm proficient in industry-leading software including <strong className="text-foreground">Revit, AutoCAD, 3ds Max, and Photoshop</strong>, with hands-on experience in architectural design, 3D visualization, and project management. My expertise extends to integrating emerging technologies, particularly AI tools, to enhance design automation, visualization workflows, and project efficiency.
-                </p>
-
-                <p>
-                  As an <strong className="text-foreground">enthusiastic learner of AI tools</strong>, I'm constantly exploring how artificial intelligence can revolutionize the architectural visualization process, from automated design generation to enhanced rendering techniques.
-                </p>
-
-                <div className="flex flex-wrap gap-3 pt-6">
-                  {[
-                    "Architectural Visualization",
-                    "3D Modeling & Rendering", 
-                    "AI Integration",
-                    "Project Management",
-                    "Design Automation"
-                  ].map((skill, index) => (
-                    <span 
-                      key={index}
-                      className="px-4 py-2 bg-secondary text-secondary-foreground rounded-full text-sm font-medium"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="grid md:grid-cols-3 gap-8">
+            {sections.map((section, index) => {
+              const IconComponent = section.icon;
+              return (
+                <Card key={index} className="shadow-soft border border-border hover:shadow-medium transition-all duration-300">
+                  <CardContent className="p-6 text-center">
+                    <div className="mb-4">
+                      <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <IconComponent className="w-6 h-6 text-accent-foreground" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                        {section.title}
+                      </h3>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <h4 className="font-medium text-foreground text-sm">
+                        {section.content.institution}
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        {section.content.period}
+                      </p>
+                      <p className="text-sm font-medium text-accent">
+                        {section.content.description}
+                      </p>
+                      <p className="text-xs text-muted-foreground leading-relaxed">
+                        {section.content.details}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
