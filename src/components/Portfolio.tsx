@@ -1,46 +1,62 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import ProjectDialog from "./ProjectDialog";
 
 const Portfolio = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
   const projects = [
     {
       title: "Modern Villa Exterior",
       category: "Exterior",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Modern+Villa",
-      description: "Contemporary residential design with clean lines and natural materials"
+      description: "Contemporary residential design with clean lines and natural materials. This project showcases modern architectural principles with emphasis on natural lighting and sustainable materials.",
+      software: ["3ds Max", "Corona Renderer", "Photoshop", "AutoCAD"]
     },
     {
       title: "Cozy Living Room",
       category: "Interior", 
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Living+Room",
-      description: "Warm and inviting interior space with modern furnishings"
+      description: "Warm and inviting interior space with modern furnishings. Features carefully selected color palette and furniture arrangement to create a comfortable living environment.",
+      software: ["3ds Max", "V-ray", "Photoshop", "Revit"]
     },
     {
       title: "Office Building",
       category: "3D Model",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Office+Building",
-      description: "Commercial architecture visualization with detailed modeling"
+      description: "Commercial architecture visualization with detailed modeling. Complete 3D representation including structural elements, MEP systems, and interior layouts.",
+      software: ["Revit", "3ds Max", "Enscape", "AutoCAD"]
     },
     {
       title: "Kitchen Design",
       category: "Interior",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Kitchen+Design", 
-      description: "Modern kitchen with sleek finishes and functional layout"
+      description: "Modern kitchen with sleek finishes and functional layout. Optimized workflow design with premium materials and integrated appliances for contemporary living.",
+      software: ["3ds Max", "Corona Renderer", "Photoshop"]
     },
     {
       title: "Landscape View",
       category: "Exterior",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Landscape+View",
-      description: "Outdoor architectural visualization with landscaping elements"
+      description: "Outdoor architectural visualization with landscaping elements. Integration of building design with natural environment and sustainable landscaping solutions.",
+      software: ["3ds Max", "V-ray", "Photoshop", "Lumion"]
     },
     {
       title: "3D Floor Plan",
       category: "3D Model",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Floor+Plan",
-      description: "Detailed architectural floor plan with realistic rendering"
+      description: "Detailed architectural floor plan with realistic rendering. Complete space planning with furniture layout, circulation paths, and technical specifications.",
+      software: ["Revit", "3ds Max", "AutoCAD", "Photoshop"]
     }
   ];
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setDialogOpen(true);
+  };
 
   return (
     <section id="portfolio" className="py-20 bg-muted/30">
@@ -78,7 +94,12 @@ const Portfolio = () => {
                   <p className="text-sm text-muted-foreground mb-4">
                     {project.description}
                   </p>
-                  <Button variant="outline" size="sm" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    className="w-full"
+                    onClick={() => handleProjectClick(project)}
+                  >
                     View Project
                   </Button>
                 </CardContent>
@@ -87,6 +108,12 @@ const Portfolio = () => {
           </div>
         </div>
       </div>
+
+      <ProjectDialog 
+        project={selectedProject}
+        open={dialogOpen}
+        onOpenChange={setDialogOpen}
+      />
     </section>
   );
 };

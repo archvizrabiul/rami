@@ -43,6 +43,12 @@ const Header = () => {
           {/* CTA Button */}
           <Button 
             className="bg-accent hover:bg-accent/90 text-accent-foreground"
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/lovable-uploads/0a0e75a7-5771-4883-82e9-fed89b51fe1f.png';
+              link.download = 'Rabiul_Hasan_CV.png';
+              link.click();
+            }}
           >
             <Download className="w-4 h-4 mr-2" />
             Download CV
