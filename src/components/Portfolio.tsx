@@ -23,7 +23,7 @@ const Portfolio = () => {
       description: "Advanced lighting tutorial demonstrating realistic lightning effects using Corona Renderer's powerful lighting tools and atmospheric effects.",
       software: ["3ds Max", "Corona Renderer"],
       hasVideo: true,
-      videoUrl: "https://www.youtube.com/embed/xxt0hDjbwgw?autoplay=1&mute=1&controls=0&loop=1&playlist=xxt0hDjbwgw&modestbranding=1&rel=0"
+      videoUrl: "https://www.youtube.com/embed/xxt0hDjbwgw?autoplay=1&mute=1&controls=0&loop=1&playlist=xxt0hDjbwgw&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&disablekb=1&fs=0"
     },
     {
       title: "Modern Villa Exterior",
