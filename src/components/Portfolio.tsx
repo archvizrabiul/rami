@@ -10,6 +10,13 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "Serene Bedroom Sanctuary",
+      category: "Interior",
+      image: "/lovable-uploads/f55d0697-cbf9-4b31-a8eb-9f8ac12add55.png",
+      description: "A minimalist bedroom design featuring warm neutral tones and textured elements. This space emphasizes comfort and tranquility with carefully selected materials and lighting to create a peaceful retreat.",
+      software: ["3ds Max", "Corona Renderer", "Photoshop", "SketchUp"]
+    },
+    {
       title: "Modern Villa Exterior",
       category: "Exterior",
       image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Modern+Villa",

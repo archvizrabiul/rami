@@ -22,7 +22,13 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
 
   if (!project) return null;
 
-  const projectGallery = [
+  const projectGallery = project.title === "Serene Bedroom Sanctuary" ? [
+    "/lovable-uploads/f55d0697-cbf9-4b31-a8eb-9f8ac12add55.png",
+    "/lovable-uploads/cd71e653-0f88-4daf-ac80-e43d7d6d9523.png",
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+1",
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+2",
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+3"
+  ] : [
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+1",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+2", 
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+3",
