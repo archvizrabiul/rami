@@ -13,14 +13,14 @@ const Portfolio = () => {
       title: "Soft Shadows & Silent Mornings",
       category: "Interior",
       image: "/lovable-uploads/f55d0697-cbf9-4b31-a8eb-9f8ac12add55.png",
-      description: "A minimalist bedroom design featuring warm neutral tones and textured elements. This space emphasizes comfort and tranquility with carefully selected materials and lighting to create a peaceful retreat.",
+      description: "Palette: A Neutral Bedroom Retreat featuring warm neutral tones and textured elements. This space emphasizes comfort and tranquility with carefully selected materials and lighting to create a peaceful retreat.",
       software: ["3ds Max", "Corona Renderer", "Photoshop", "SketchUp"]
     },
     {
       title: "Realistic Lightning Effect in 3ds Max with Corona Renderer",
       category: "Interior",
       image: "/lovable-uploads/754ed021-d400-48bc-ad7f-37060d7b45eb.png",
-      description: "",
+      description: "Advanced lighting tutorial demonstrating realistic lightning effects using Corona Renderer's powerful lighting tools and atmospheric effects.",
       software: ["3ds Max", "Corona Renderer"],
       hasVideo: true,
       videoUrl: "https://www.youtube.com/embed/xxt0hDjbwgw?autoplay=1&mute=1&controls=0&loop=1&playlist=xxt0hDjbwgw&modestbranding=1&rel=0"

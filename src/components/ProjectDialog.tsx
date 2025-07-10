@@ -89,11 +89,11 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
             </div>
           ) : (
             /* Main Project Image */
-            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-large border border-border/50">
+            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-large border border-border/50 bg-muted/20 flex items-center justify-center">
               <img 
                 src={displayImage}
                 alt={project.title}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                className="max-w-full max-h-full object-contain hover:scale-105 transition-transform duration-500"
               />
             </div>
           )}
