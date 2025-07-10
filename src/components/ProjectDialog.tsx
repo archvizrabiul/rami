@@ -12,6 +12,8 @@ interface ProjectDialogProps {
     image: string;
     description: string;
     software: string[];
+    hasVideo?: boolean;
+    videoUrl?: string;
   } | null;
   open: boolean;
   onOpenChange: (open: boolean) => void;
@@ -22,12 +24,15 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
 
   if (!project) return null;
 
-  const projectGallery = project.title === "Serene Bedroom Sanctuary" ? [
+  const projectGallery = project.title === "Soft Shadows & Silent Mornings" ? [
     "/lovable-uploads/f55d0697-cbf9-4b31-a8eb-9f8ac12add55.png",
     "/lovable-uploads/cd71e653-0f88-4daf-ac80-e43d7d6d9523.png",
-    "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+1",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+2",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+3"
+  ] : project.title === "Animated Living Space" ? [
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+1",
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+2",
+    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+3"
   ] : [
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+1",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+2", 
@@ -59,14 +64,36 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
         </DialogHeader>
         
         <div className="space-y-8 pt-6">
-          {/* Main Project Image */}
-          <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-large border border-border/50">
-            <img 
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
+          {/* Video Section for Animated Living Space */}
+          {project.hasVideo && project.videoUrl ? (
+            <div className="space-y-6">
+              <div className="aspect-video overflow-hidden rounded-xl shadow-large border border-border/50 group">
+                <iframe
+                  src={project.videoUrl}
+                  title={`${project.title} Animation`}
+                  className="w-full h-full rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+              <div className="bg-gradient-to-r from-accent/10 via-primary/5 to-accent/10 rounded-xl p-6 border border-accent/20">
+                <h3 className="font-semibold text-xl mb-3 text-foreground">Animation Preview</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  Experience the dynamic flow of this living space through our custom animation. The video showcases the seamless integration of modern design elements with fluid motion graphics.
+                </p>
+              </div>
+            </div>
+          ) : (
+            /* Main Project Image */
+            <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-large border border-border/50">
+              <img 
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          )}
 
           {/* Project Gallery Carousel */}
           <div className="space-y-4">

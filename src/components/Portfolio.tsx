@@ -10,11 +10,20 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "Serene Bedroom Sanctuary",
+      title: "Soft Shadows & Silent Mornings",
       category: "Interior",
       image: "/lovable-uploads/f55d0697-cbf9-4b31-a8eb-9f8ac12add55.png",
       description: "A minimalist bedroom design featuring warm neutral tones and textured elements. This space emphasizes comfort and tranquility with carefully selected materials and lighting to create a peaceful retreat.",
       software: ["3ds Max", "Corona Renderer", "Photoshop", "SketchUp"]
+    },
+    {
+      title: "Animated Living Space",
+      category: "Interior",
+      image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Animated+Living+Space",
+      description: "A dynamic interior visualization showcasing modern living spaces with fluid animations and contemporary design elements. This project demonstrates the integration of motion graphics with architectural visualization.",
+      software: ["3ds Max", "After Effects", "Corona Renderer", "Photoshop"],
+      hasVideo: true,
+      videoUrl: "https://www.youtube.com/embed/xxt0hDjbwgw?autoplay=1&mute=1&controls=0&loop=1&playlist=xxt0hDjbwgw&modestbranding=1&rel=0"
     },
     {
       title: "Modern Villa Exterior",
