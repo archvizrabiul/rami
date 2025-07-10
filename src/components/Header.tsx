@@ -45,8 +45,8 @@ const Header = () => {
             className="bg-accent hover:bg-accent/90 text-accent-foreground"
             onClick={() => {
               const link = document.createElement('a');
-              link.href = '/lovable-uploads/0a0e75a7-5771-4883-82e9-fed89b51fe1f.png';
-              link.download = 'Rabiul_Hasan_CV.png';
+              link.href = '/lovable-uploads/Rabiul_CV_B&W.pdf';
+              link.download = 'Rabiul_CV_B&W.pdf';
               link.click();
             }}
           >
