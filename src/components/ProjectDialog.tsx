@@ -21,6 +21,7 @@ interface ProjectDialogProps {
 
 const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
   const [showSoftware, setShowSoftware] = useState(false);
+  const [currentMainImage, setCurrentMainImage] = useState("");
 
   if (!project) return null;
 
@@ -29,17 +30,19 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
     "/lovable-uploads/cd71e653-0f88-4daf-ac80-e43d7d6d9523.png",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+2",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Additional+Render+3"
-  ] : project.title === "Animated Living Space" ? [
-    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+1",
-    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+2",
-    "https://placehold.co/800x600/e5e7eb/6b7280?text=Animation+Sequence+3"
-  ] : [
+  ] : project.title === "Realistic Lightning Effect in 3ds Max with Corona Renderer" ? [] : [
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+1",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+2", 
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+3",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+4",
     "https://placehold.co/800x600/e5e7eb/6b7280?text=Project+Render+5"
   ];
+
+  const displayImage = currentMainImage || project.image;
+
+  const handleGalleryImageClick = (imageUrl: string) => {
+    setCurrentMainImage(imageUrl);
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -88,40 +91,48 @@ const ProjectDialog = ({ project, open, onOpenChange }: ProjectDialogProps) => {
             /* Main Project Image */
             <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-large border border-border/50">
               <img 
-                src={project.image}
+                src={displayImage}
                 alt={project.title}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
               />
             </div>
           )}
 
-          {/* Project Gallery Carousel */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold text-foreground">Project Gallery</h3>
-            <Carousel className="w-full">
-              <CarouselContent className="-ml-4">
-                {projectGallery.map((image, index) => (
-                  <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                    <div className="aspect-[4/3] overflow-hidden rounded-lg border border-border/30 shadow-soft">
-                      <img 
-                        src={image}
-                        alt={`${project.title} render ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="bg-card/80 backdrop-blur-sm border-accent/20 hover:bg-accent/10" />
-              <CarouselNext className="bg-card/80 backdrop-blur-sm border-accent/20 hover:bg-accent/10" />
-            </Carousel>
-          </div>
+          {/* Project Gallery Carousel - Hide for Realistic Lightning Effect project */}
+          {projectGallery.length > 0 && (
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-foreground">Project Gallery</h3>
+              <Carousel className="w-full">
+                <CarouselContent className="-ml-4">
+                  {projectGallery.map((image, index) => (
+                    <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+                      <div 
+                        className="aspect-[4/3] overflow-hidden rounded-lg border border-border/30 shadow-soft cursor-pointer"
+                        onClick={() => handleGalleryImageClick(image)}
+                      >
+                        <img 
+                          src={image}
+                          alt={`${project.title} render ${index + 1}`}
+                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="bg-card/80 backdrop-blur-sm border-accent/20 hover:bg-accent/10" />
+                <CarouselNext className="bg-card/80 backdrop-blur-sm border-accent/20 hover:bg-accent/10" />
+              </Carousel>
+            </div>
+          )}
           
           <div className="space-y-6">
-            <div className="bg-card/30 rounded-xl p-6 border border-border/30">
-              <h3 className="font-semibold text-xl mb-3 text-foreground">Project Description</h3>
-              <p className="text-muted-foreground leading-relaxed text-lg">{project.description}</p>
-            </div>
+            {/* Hide description for Realistic Lightning Effect project */}
+            {project.title !== "Realistic Lightning Effect in 3ds Max with Corona Renderer" && project.description && (
+              <div className="bg-card/30 rounded-xl p-6 border border-border/30">
+                <h3 className="font-semibold text-xl mb-3 text-foreground">Project Description</h3>
+                <p className="text-muted-foreground leading-relaxed text-lg">{project.description}</p>
+              </div>
+            )}
             
             {showSoftware && (
               <div className="bg-accent/5 rounded-xl p-6 border border-accent/20">

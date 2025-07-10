@@ -17,11 +17,11 @@ const Portfolio = () => {
       software: ["3ds Max", "Corona Renderer", "Photoshop", "SketchUp"]
     },
     {
-      title: "Animated Living Space",
+      title: "Realistic Lightning Effect in 3ds Max with Corona Renderer",
       category: "Interior",
-      image: "https://placehold.co/600x400/e5e7eb/6b7280?text=Animated+Living+Space",
-      description: "A dynamic interior visualization showcasing modern living spaces with fluid animations and contemporary design elements. This project demonstrates the integration of motion graphics with architectural visualization.",
-      software: ["3ds Max", "After Effects", "Corona Renderer", "Photoshop"],
+      image: "/lovable-uploads/754ed021-d400-48bc-ad7f-37060d7b45eb.png",
+      description: "",
+      software: ["3ds Max", "Corona Renderer"],
       hasVideo: true,
       videoUrl: "https://www.youtube.com/embed/xxt0hDjbwgw?autoplay=1&mute=1&controls=0&loop=1&playlist=xxt0hDjbwgw&modestbranding=1&rel=0"
     },
